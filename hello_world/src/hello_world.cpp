@@ -47,5 +47,5 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    return SailfishApp::main(argc, argv);
+    return SailfishApp::application(argc, argv);
 }
