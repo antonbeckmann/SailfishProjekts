@@ -14,7 +14,8 @@ TARGET = hello_world
 
 CONFIG += sailfishapp
 
-SOURCES += src/hello_world.cpp
+SOURCES += src/hello_world.cpp \
+    src/scriptlauncher.cpp
 
 DISTFILES += qml/hello_world.qml \
     qml/cover/CoverPage.qml \
@@ -38,3 +39,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/hello_world-de.ts
+
+HEADERS += \
+    src/scriptlauncher.h

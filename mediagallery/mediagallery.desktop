@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Media Gallery
+Icon=icon-launcher-default
+X-Nemo-Application-Type=silica-qt5
+Comment=Sailfish UI application
+Exec=mediagallery

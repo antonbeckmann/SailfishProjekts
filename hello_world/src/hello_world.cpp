@@ -34,7 +34,6 @@
 
 #include <sailfishapp.h>
 
-
 int main(int argc, char *argv[])
 {
     // SailfishApp::main() will display "qml/hello_world.qml", if you need more
@@ -47,5 +46,6 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    return SailfishApp::application(argc, argv);
+
+    return SailfishApp::main(argc, argv);
 }

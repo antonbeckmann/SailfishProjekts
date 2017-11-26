@@ -63,11 +63,33 @@ Page {
             PageHeader {
                 title: qsTr("UI Template")
             }
-            Label {
+            Button {
+                id: button1
                 x: Theme.horizontalPageMargin
                 text: qsTr("Hello Sailors")
                 color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
+
+
+            }
+            Label{
+                id: label1
+                x: Theme.horizontalPageMargin
+                text: qsTr("command1")
+                color: Theme.primaryColor
+            }
+
+            Button {
+                id: button2
+                x: Theme.horizontalPageMargin
+                text: qsTr("Hello Sailors")
+                color: Theme.secondaryHighlightColor
+
+            }
+            Label{
+                id: label2
+                x: Theme.horizontalPageMargin
+                text: qsTr("command2")
+                color: Theme.primaryColor
             }
         }
     }
