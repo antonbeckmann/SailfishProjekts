@@ -33,6 +33,9 @@
 #endif
 
 #include <sailfishapp.h>
+#include "src/process.h"
+
+
 
 int main(int argc, char *argv[])
 {
@@ -46,6 +49,7 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    qmlRegisterType <Process> ("Process", 1, 0, "Process");
 
     return SailfishApp::main(argc, argv);
 }

@@ -14,8 +14,9 @@ TARGET = hello_world
 
 CONFIG += sailfishapp
 
-SOURCES += src/hello_world.cpp \
-    src/scriptlauncher.cpp
+HEADERS += process.h
+
+SOURCES += src/hello_world.cpp
 
 DISTFILES += qml/hello_world.qml \
     qml/cover/CoverPage.qml \
@@ -41,4 +42,4 @@ CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/hello_world-de.ts
 
 HEADERS += \
-    src/scriptlauncher.h
+    src/process.h

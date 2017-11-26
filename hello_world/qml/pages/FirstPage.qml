@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+import Process 1.0
 
 Page {
     id: page
@@ -68,8 +68,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 text: qsTr("Hello Sailors")
                 color: Theme.secondaryHighlightColor
-
-
+                onClicked: Process.makedirs
             }
             Label{
                 id: label1
@@ -83,7 +82,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 text: qsTr("Hello Sailors")
                 color: Theme.secondaryHighlightColor
-
+                onClicked: button2.text = Process.getCommandString
             }
             Label{
                 id: label2

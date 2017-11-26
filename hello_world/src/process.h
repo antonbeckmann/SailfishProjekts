@@ -8,7 +8,13 @@ class Process : public QProcess {
     Q_OBJECT
 
 public:
-    Process(QObject *parent = 0) : QProcess(parent) { }
+    QString commandString;
+
+
+
+    Process(QObject *parent = 0) : QProcess(parent) {
+        QString commandString ="";
+    }
 
     Q_INVOKABLE void start(const QString &program, const QVariantList &arguments) {
         QStringList args;
@@ -19,6 +25,18 @@ public:
             args << arguments[i].toString();
 
         QProcess::start(program, args);
+    }
+
+    Q_INVOKABLE void makedirs() {
+        QStringList args;
+        args<<"/home/nemo/folder1";
+        commandString = QString("/home/nemo/folder1");
+
+        QProcess::start("/bin/mkdir",args);
+    }
+
+    Q_INVOKABLE QString getCommandString() {
+        return commandString;
     }
 
     Q_INVOKABLE QByteArray readAll() {

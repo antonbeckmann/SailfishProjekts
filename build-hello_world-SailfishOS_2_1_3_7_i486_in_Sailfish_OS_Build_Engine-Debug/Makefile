@@ -48,11 +48,9 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../hello_world/src/hello_world.cpp \
-		../hello_world/src/scriptlauncher.cpp moc_scriptlauncher.cpp
+SOURCES       = ../hello_world/src/hello_world.cpp moc_process.cpp
 OBJECTS       = hello_world.o \
-		scriptlauncher.o \
-		moc_scriptlauncher.o
+		moc_process.o
 DIST          = ../hello_world/qml/hello_world.qml \
 		../hello_world/qml/cover/CoverPage.qml \
 		../hello_world/qml/pages/FirstPage.qml \
@@ -158,8 +156,8 @@ DIST          = ../hello_world/qml/hello_world.qml \
 		/usr/share/qt5/mkspecs/features/exceptions.prf \
 		/usr/share/qt5/mkspecs/features/yacc.prf \
 		/usr/share/qt5/mkspecs/features/lex.prf \
-		../hello_world/hello_world.pro ../hello_world/src/scriptlauncher.h ../hello_world/src/hello_world.cpp \
-		../hello_world/src/scriptlauncher.cpp
+		../hello_world/hello_world.pro process.h \
+		../hello_world/src/process.h ../hello_world/src/hello_world.cpp
 QMAKE_TARGET  = hello_world
 DESTDIR       = 
 TARGET        = hello_world
@@ -388,8 +386,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../hello_world/src/scriptlauncher.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../hello_world/src/hello_world.cpp ../hello_world/src/scriptlauncher.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents process.h ../hello_world/src/process.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../hello_world/src/hello_world.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents translations/hello_world-de.ts $(DISTDIR)/
 
 
@@ -415,11 +413,11 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_scriptlauncher.cpp
+compiler_moc_header_make_all: moc_process.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_scriptlauncher.cpp
-moc_scriptlauncher.cpp: ../hello_world/src/scriptlauncher.h
-	/usr/lib/qt5/bin/moc $(DEFINES) -I/usr/share/qt5/mkspecs/linux-g++ -I/home/src1/hello_world -I/usr/include/sailfishapp -I/usr/include/mdeclarativecache5 -I/usr/include/qt5 -I/usr/include/qt5/QtQuick -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtQml -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/4.8.3 -I/usr/include/c++/4.8.3/i486-meego-linux -I/usr/include/c++/4.8.3/backward -I/usr/lib/gcc/i486-meego-linux/4.8.3/include -I/usr/local/include -I/usr/include ../hello_world/src/scriptlauncher.h -o moc_scriptlauncher.cpp
+	-$(DEL_FILE) moc_process.cpp
+moc_process.cpp: ../hello_world/src/process.h
+	/usr/lib/qt5/bin/moc $(DEFINES) -I/usr/share/qt5/mkspecs/linux-g++ -I/home/src1/hello_world -I/usr/include/sailfishapp -I/usr/include/mdeclarativecache5 -I/usr/include/qt5 -I/usr/include/qt5/QtQuick -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtQml -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/4.8.3 -I/usr/include/c++/4.8.3/i486-meego-linux -I/usr/include/c++/4.8.3/backward -I/usr/lib/gcc/i486-meego-linux/4.8.3/include -I/usr/local/include -I/usr/include ../hello_world/src/process.h -o moc_process.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -433,14 +431,11 @@ compiler_clean: compiler_moc_header_clean
 
 ####### Compile
 
-hello_world.o: ../hello_world/src/hello_world.cpp ../hello_world/src/scriptlauncher.h
+hello_world.o: ../hello_world/src/hello_world.cpp ../hello_world/src/process.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hello_world.o ../hello_world/src/hello_world.cpp
 
-scriptlauncher.o: ../hello_world/src/scriptlauncher.cpp ../hello_world/src/scriptlauncher.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scriptlauncher.o ../hello_world/src/scriptlauncher.cpp
-
-moc_scriptlauncher.o: moc_scriptlauncher.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_scriptlauncher.o moc_scriptlauncher.cpp
+moc_process.o: moc_process.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_process.o moc_process.cpp
 
 ####### Install
 
